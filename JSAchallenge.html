@@ -1,0 +1,119 @@
+<html>
+<body onload = "ShowAll();">
+<div id = "ShowList">
+         <input type="button" name="Add" value="Add People" onClick="AddPeople();">
+         <p id = "awesome-index"></p>
+</div>
+
+<script>
+        var dataList = [
+            {
+                Name: 'Bob',
+                occupation: 'programmer',
+                awesomeindex: 7
+            },
+            {
+                Name: 'Alice',
+                occupation: 'programmer',
+                awesomeindex: 9
+            },
+            {
+                Name: 'Zaphod',
+                occupation: 'Presdent of the Galaxy',
+                awesomeindex: 0
+            }
+        ];
+        
+
+        function AddPeople(){
+           // if(clicked==true){
+                var ConFirm = confirm("Do you really want to add more people to the list?");
+                if(ConFirm == true){
+                    var Pname = prompt("Input name");
+                    var Poccupation = prompt("Input occupation");
+                    var Pawesomeindex = prompt("Input awesomeindex (DO NOT LEAVE EMPTY)");
+//Add on 3/13/2005 for average caculation
+                    if(Pawesomeindex == ""){
+                        alert("awesomeindex must be a number!!");
+                        AddPeople();
+                    }else if(Pawesomeindex == null){
+                        alert("You Cancelled");
+                        AddPeople();
+                    }else{
+                 var Pawesomeindex1 = parseInt(Pawesomeindex);
+                    //var arr = new Array();
+                    var arr = { 
+                Name: Pname,
+                occupation: Poccupation,
+                awesomeindex: Pawesomeindex1
+            };
+                    dataList.push(arr);
+                    console.log(dataList);
+
+                    var ShowList = document.getElementById('ShowList');
+                    var AddItem = document.createElement('div');
+                    ShowList.appendChild(AddItem);
+                    //Add people name
+                    var Name1 = document.createElement('p');
+                    Name1.innerHTML = "name: " + Pname;
+                    AddItem.appendChild(Name1);
+                    //Add people occupation
+                    var occupation1 = document.createElement('p');
+                    occupation1.innerHTML = "occupation: " + Poccupation;
+                    AddItem.appendChild(occupation1);
+                    //Add people awesomeindex
+                    var awesomeindex1 = document.createElement('p');
+                    awesomeindex1.innerHTML = "awesomeindex: " + Pawesomeindex;
+                    AddItem.appendChild(awesomeindex1);
+                    //Add new line
+                    var Br = document.createElement('br');
+                    AddItem.appendChild(Br);
+                }
+                
+   }             
+//Add on 3/13/2005 for average caculation
+        var AwesomeIndexSum = 0;
+        for (var i = 0; i < dataList.length; i++) {
+            var AddItem = document.getElementById('awesome-index');
+            AwesomeIndexSum += dataList[i].awesomeindex;
+            console.log(AwesomeIndexSum);
+            }     
+
+            var AwesomeIndexAverage = AwesomeIndexSum/dataList.length;
+            AddItem.innerHTML = "Average awesomeindex of all programmers is " + AwesomeIndexAverage;
+        }
+
+        function ShowAll() {
+                    var AwesomeIndexSum = 0;
+        for (var i = 0; i < dataList.length; i++) {
+            var ShowList = document.getElementById('ShowList');
+            var AddItem = document.createElement('div');
+            ShowList.appendChild(AddItem);
+//people name
+            var Name1 = document.createElement('p');
+            Name1.innerHTML = "name: " + dataList[i].Name;
+            AddItem.appendChild(Name1);
+//people occupation
+            var occupation1 = document.createElement('p');
+            occupation1.innerHTML = "occupation: " + dataList[i].occupation;
+            AddItem.appendChild(occupation1);
+//people awesomeindex
+            var awesomeindex1 = document.createElement('p');
+            awesomeindex1.innerHTML = "awesomeindex: " + dataList[i].awesomeindex;
+            awesomeindex1.id = 'awesomeindex'+i;
+            AddItem.appendChild(awesomeindex1);            
+//New line
+            var Br = document.createElement('br');
+            AddItem.appendChild(Br);  
+//Add on 3/13/2005 for average caculation
+            var AddItem = document.getElementById('awesome-index');
+            AwesomeIndexSum += dataList[i].awesomeindex;
+            console.log(AwesomeIndexSum);
+
+            var AwesomeIndexAverage = AwesomeIndexSum/dataList.length;
+            AddItem.innerHTML = "Average awesomeindex of all programmers is " + AwesomeIndexAverage;  
+            } 
+    }
+    </script>
+  </body>
+</html>

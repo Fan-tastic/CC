@@ -1,0 +1,73 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://rawgit.com/lodash/lodash/3.5.0/lodash.min.js"></script>
+</head>
+<body id = "Show">
+<div id = "ShowList">
+    <input type="button" id="AddPeople" value="Add People">
+    <p id = "awesome-index"></p>
+</div>
+<script>
+    var dataList = [
+        {
+            Name: 'Bob',
+            occupation: 'programmer',
+            awesomeindex: 7
+        },
+        {
+            Name: 'Alice',
+            occupation: 'programmer',
+            awesomeindex: 9
+        },
+        {
+            Name: 'Zaphod',
+            occupation: 'Presdent of the Galaxy',
+            awesomeindex: 0
+        }
+    ];
+        var AwesomeIndexArr = _.map(dataList, 'awesomeindex');
+        console.log(AwesomeIndexArr);
+    $('#Show').ready(function(){
+        $.each(dataList,function(i, data){
+            $('#ShowList').append("<p>"+"name: "+dataList[i].Name+"</p>");
+            $('#ShowList').append("<p>"+"occupation: "+dataList[i].occupation+"</p>");
+            $('#ShowList').append("<p>"+"awesomeindex: "+dataList[i].awesomeindex+"</p>");
+            var total = _.sum(AwesomeIndexArr);
+            $('#awesome-index').text("Average awesomeindex of all programmers is " + total/dataList.length);
+         console.log(total);
+        });
+           });
+    $('#AddPeople').click(function(){
+        var ConFirm = confirm("Do you really want to add more people to the list?");
+                if(ConFirm == true){
+                    var Pname = prompt("Input name");
+                    var Poccupation = prompt("Input occupation");
+                    var Pawesomeindex = prompt("Input awesomeindex (DO NOT LEAVE EMPTY)");
+                    if(Pawesomeindex == ""){
+                        alert("awesomeindex must be a number!!");
+                        AddPeople();
+                    }else if(Pawesomeindex == null){
+                        alert("You Cancelled");
+                        AddPeople();
+                    }else{
+                 var Pawesomeindex1 = parseInt(Pawesomeindex);
+                    var arr = { 
+                Name: Pname,
+                occupation: Poccupation,
+                awesomeindex: Pawesomeindex1
+            };
+                    dataList.push(arr);
+                    var AwesomeIndexArr1 = _.map(dataList, 'awesomeindex');
+                    console.log(dataList);
+    };
+            $('#ShowList').append("<p>"+"name: "+Pname+"</p>");
+            $('#ShowList').append("<p>"+"occupation: "+Poccupation+"</p>");
+            $('#ShowList').append("<p>"+"awesomeindex: "+Pawesomeindex1+"</p>");
+            var total = _.sum(AwesomeIndexArr1);
+            $('#awesome-index').text("Average awesomeindex of all programmers is " + total/dataList.length);
+};
+});
+    </script>
+  </body>
+</html>
