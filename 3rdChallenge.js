@@ -1,5 +1,6 @@
 function Library()
 {
+	this.shelves = [];
 //javascript doesn't have a function to remove specified element from array
 //Define function for array to search the specified element (index)
 	this.prototype.indexOf = function(val) 
@@ -20,41 +21,50 @@ function Library()
             }
     };
 
-	this.shelves = [];
-
 //add/remove shelf from library
-	this.AddShelf = function()
+	this.addShelf = function(newShelf)
 	{
-		var NewShelf = prompt("Input the new shelf name here");
-		this.shelves.push(NewShelf);
+		this.shelves.push(newShelf);
 	};
 
-	this.DelShelf = function()
+	this.removeShelf = function(oldshelf)
 	{
-        var OldShelf = prompt("Input the shelf name you want to delete");
-        this.shelves.remove(Oldshelf);
+        this.shelves.remove(oldshelf);
 	};
-
+};
 //add/remove book from shelf
-	this.shelves.books = function(Bookname, Author)
+function Shelf()
+{
+	this.books = [];
+
+	this.addBook = function(newBook)
 	{
-		this.shelves.books.Bookname = Bookname;
-		this.shelves.books.Author = Author;
-	}
+		this.books.push(NewBook);
+	};
+
+	this.removeBook = function(oldBook)
+	{
+        this.books.remove(OldBook);
+	};
+};
+
+function Book(bookname, author)
+{
+		this.bookname = bookname;
+		this.author = author;
+};
+
+var newShelf = new Library('Computer Science');
+Library.addShelf(newShelf);
+
+var oldshelf = new Library('Geoscience');
+Library.removeShelf(oldshelf);
+
+var newBook = new Book('Javacript','Tom');
+Shelf.addBook(newBook);
+
+var oldBook = new Book('3D Seismic','Jerry');
+Shelf.removeBook(oldBook);
 
 
-	this.AddBook = function()
-	{
-	    var NewBookName = prompt("Input the new book name");
-	    var NewAuthor = prompt("Input the book author");
-	    var NewBook = new this.shelves.books(NewBookName,NewAuthor);
-	    this.shelves.books.push(NewBook);
-	}
-
-	this.DelBook = function()
-	{
-        var DelBookName = prompt("Input the book name you want to delete");
-        this.shelves.books.remove(DelBookName);
-	}
-}
 
