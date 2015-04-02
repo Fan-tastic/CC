@@ -35,8 +35,9 @@ function Library()
 //add/remove book from shelf
 function Shelf(shelfName)
 {
-	this.books = [];
 	this.shelfName = shelfName;
+	this.books = [];
+	
 
 	this.addBook = function(newBook)
 	{
@@ -55,20 +56,20 @@ function Book(bookname, author)
 		this.author = author;
 };
 
-var newShelf = new Library('Computer Science');
-Library.addShelf(newShelf);
 
-var oldshelf = new Library('Geoscience');
-Library.removeShelf(oldshelf);
+
 
 var newShelf1 = new Shelf('History');
 Library.addShelf(newShelf1);
 
+var oldshelf1 = new Library('Geoscience');
+Library.removeShelf(oldshelf1);
+
 var newBook = new Book('Javacript','Tom');
-Shelf.addBook(newBook);
+newShelf1.addBook(newBook);
 
 var oldBook = new Book('3D Seismic','Jerry');
-Shelf.removeBook(oldBook);
+newShelf1.removeBook(oldBook);
 
 
 
