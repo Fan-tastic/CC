@@ -57,35 +57,13 @@ function Book(bookname, author)
 };
 
 
-var Library = [
-        {
-            'History': [
-                {
-                    bookName: 'History',
-                    Author: 'Jack'
-                },
-                {
-                    bookName: 'Math',
-                    Author: 'Rose'
-                }
-            ],
-            'Geoscience': [
-                {
-                    bookName: 'Science',
-                    Author: 'Tom'
-                },
-                {
-                    bookName: 'Music',
-                    Author: 'Jerry'
-                }
-            ]
-        }];
+var library = new Library();
 
-var newShelf1 = new Shelf('History');
-Library.addShelf(newShelf1);
+var newShelf = new Shelf('History');
+library.addShelf(newShelf1);
 
-var oldshelf1 = new Shelf('Geoscience');
-Library.removeShelf(oldshelf1);
+var oldshelf = new Shelf('Geoscience');
+library.removeShelf(oldshelf1);
 
 var newBook = new Book('Javacript','Tom');
 newShelf1.addBook(newBook);
