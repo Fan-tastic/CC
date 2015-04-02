@@ -33,9 +33,10 @@ function Library()
 	};
 };
 //add/remove book from shelf
-function Shelf()
+function Shelf(shelfName)
 {
 	this.books = [];
+	this.shelfName = shelfName;
 
 	this.addBook = function(newBook)
 	{
@@ -59,6 +60,9 @@ Library.addShelf(newShelf);
 
 var oldshelf = new Library('Geoscience');
 Library.removeShelf(oldshelf);
+
+var newShelf1 = new Shelf('History');
+Library.addShelf(newShelf1);
 
 var newBook = new Book('Javacript','Tom');
 Shelf.addBook(newBook);
